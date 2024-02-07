@@ -4,11 +4,11 @@ def hex_to_rgb(hex_color):
     return int(hex_color[1:3], 16), int(hex_color[3:5], 16), int(hex_color[5:7], 16), 255
 
 # Create a window
-window = pyglet.window.Window(width=810, height=200, caption='Binary Search Visualization')
+window = pyglet.window.Window(width=850, height=200, caption='Binary Search Visualization')
 batch = pyglet.graphics.Batch()
 
 # Generate a sorted list with random numbers ensuring 11 is included
-numbers = sorted(random.sample(range(1, 100), k=20) + [11])
+numbers = sorted(random.sample(range(1, 100), 20) + [11])
 
 
 # Variables to control the animation and search
@@ -43,13 +43,13 @@ def on_draw():
 
         # Draw the box
         if left <= i <= right and not search_complete:
-            color = hex_to_rgb('#7BD3EA')  # color for the current search interval 
+            color = hex_to_rgb('#7BD3EA')  # color for the current search interval : blue
         elif i == mid and not search_complete:
-            color = hex_to_rgb('#FFE569') # color for the middle element
+            color = hex_to_rgb('#FFE569') # color for the middle element : yellow
         elif found and i == mid:
-            color = hex_to_rgb('#FF90BB')  # color for the number that found 
+            color = hex_to_rgb('#FF90BB')  # color for the number that found : pink
         else:
-            color = hex_to_rgb('#424769')  # color for the eliminated elements
+            color = hex_to_rgb('#424769')  # color for the eliminated elements : darkgrey
         
         pyglet.shapes.Rectangle(x, y, width, height, color=color, batch=batch).draw()
         # Draw the number inside the box
